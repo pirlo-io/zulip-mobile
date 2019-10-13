@@ -43,7 +43,7 @@ install:
   - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 script:
-  - TERM=dumb tools/test --full
+  - TERM=dumb travis_wait tools/test --full
   - tools/verify-webview-js
 
 env:
