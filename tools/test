@@ -30,7 +30,6 @@ Suites:
   jest
   prettier
   spell
-  functional
 
 By default, all suites but \`spell\` are run.
 EOF
@@ -54,7 +53,7 @@ while (( $# )); do
 done
 
 if [ -z "$suites" ]; then
-    suites=(android flow lint jest prettier functional)
+    suites=(android flow lint jest prettier)
 fi
 
 
