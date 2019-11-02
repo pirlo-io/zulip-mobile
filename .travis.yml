@@ -8,6 +8,9 @@ env:
   global:
     - ANDROID_HOME=${TRAVIS_BUILD_DIR}/android-sdk
     - PATH=${ANDROID_HOME}/:${ANDROID_HOME}/tools/:${ANDROID_HOME}/platform-tools/:${PATH}
+  jobs:
+    - TEST_SUITE=''
+    - TEST_SUIT=functional
 
 android:
   components:
@@ -43,7 +46,7 @@ install:
   - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 script:
-  - TERM=dumb tools/test --full
+  - TERM=dumb travis_wait tools/test --full ${TEST_SUITE}
   - tools/verify-webview-js
 
 script:
